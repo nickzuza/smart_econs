@@ -11,7 +11,7 @@
             <div class="container">
                 <div class="slide-title">Smart Econs</div>
                 <div class="slide-text">Строительная компания полного цикла - от эскиза до воплощения</div>
-                <a href="#"> more</a>
+                <a class="slide-more" href="#" > more</a>
             </div>
         </div>
         <div class="slide">
@@ -19,11 +19,9 @@
             <div class="container">
                 <div class="slide-title">Smart Econs</div>
                 <div class="slide-text">Строительная компания полного цикла - от эскиза до воплощения</div>
-                <a href="#"> more</a>
+                <a class="slide-more" href="#"> more</a>
             </div>
         </div>
     </div>
-
-</div>
 </div>
 @stop
