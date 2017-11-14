@@ -15,7 +15,73 @@
     @yield('meta')
 </head>
 <body>
+
     <div class="header" :class="{searchActive: search}">
+        <transition name="fadeUp">
+            <div class="toTop" v-if="toTop">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 451.847 451.846" style="enable-background:new 0 0 451.847 451.846;" xml:space="preserve">
+                    <g>
+                        <path d="M248.292,106.406l194.281,194.29c12.365,12.359,12.365,32.391,0,44.744c-12.354,12.354-32.391,12.354-44.744,0   L225.923,173.529L54.018,345.44c-12.36,12.354-32.395,12.354-44.748,0c-12.359-12.354-12.359-32.391,0-44.75L203.554,106.4   c6.18-6.174,14.271-9.259,22.369-9.259C234.018,97.141,242.115,100.232,248.292,106.406z"/>
+                    </g>
+                </svg>
+            </div>
+        </transition>
+
+        <transition name="fade">
+            <div class="preloader" v-if="loader" v-cloak>
+                <div class="el-loading-mask is-fullscreen" style="">
+                    <div class="el-loading-spinner">
+                        <svg viewBox="25 25 50 50" class="circular">
+                            <circle cx="50" cy="50" r="20" fill="none" class="path"></circle>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </transition>
+        <modal v-if="modal" v-on:close="closeMod" v-cloak class="modal-base callback mobilemenu">
+            <div class="title"><h2>Напишите нам!</h2></div>
+            <form action="">
+                <div class="input-wrapper">
+                    <label for="">Имя <sup>*</sup></label>
+                    <div class="v-input">
+                        <input type="text"
+                               v-validate="'required|min:2|max:50'"
+                               name="feedback_name"
+                               v-model.lazy="feedback.name"
+                               data-vv-validate-on="none"
+                               v-on:focus="removeError('feedback_name')"
+
+                        >
+                        <span class="error" v-if="errors.has('feedback_name')">error</span>
+                    </div>
+                </div>
+                <div class="input-wrapper">
+                    <label for="">Мэйл или телефон <sup>*</sup></label>
+                    <div class="v-input">
+                        <input type="text"
+                               v-validate="'required|min:2|max:50'"
+                               name="feedback_email"
+                               v-model.lazy="feedback.email"
+                               data-vv-validate-on="none"
+                               v-on:focus="removeError('feedback_email')"
+                        >
+                        <span class="error" v-if="errors.has('feedback_email')">error</span>
+                    </div>
+                </div>
+                <div class="input-wrapper">
+                    <label for="">Ваше сообщение <sup>*</sup></label>
+                    <div class="v-input">
+                        <textarea v-validate="'required|min:20'"
+                                  name="feedback_text"
+                                  v-model.lazy="feedback.text"
+                                  data-vv-validate-on="none"
+                                  v-on:focus="removeError('feedback_text')"></textarea>
+                        <span class="error" v-if="errors.has('feedback_text')">error</span>
+                    </div>
+                </div>
+                <button type="button" class="submit" v-on:click="validate">Отправить!</button>
+            </form>
+        </modal>
         <div class="container">
             <div class="header-wrapper">
                 <div class="header-top">
@@ -68,7 +134,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="callback">Оставить Заявку</div>
+                    <button v-on:click="modal = !modal" class="callback">Оставить Заявку</button>
                 </div>
             </div>
         </div>
@@ -93,12 +159,12 @@
                         <div class="mob-wrapper">
                             <div class="search-wrapper">
                                 <form class="container">
-                                    <button class="searchButton">
+                                    <button  class="searchButton">
                                         <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="17px" height="15px" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve">
-                                    <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"/>
-                                </svg>
+                                             <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"/>
+                                            </svg>
                                     </button>
-                                    <input type="text" placeholder="Поиск на сайте">
+                                    <input type="text" placeholder="Поиск на сайте" v-model="searchData">
                                 </form>
                                 <div class="lang">
                                     <div class="lang-active">
@@ -223,8 +289,68 @@
             @yield('content')
         </main>
     </div>
+    <div class="footer">
+        <div class="container">
+            <div class="footer-mob">
+                <div class="mob-title">Информация <span class="close">+</span></div>
+                <ul>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Новости</a></li>
+                    <li><a href="#">Услуги</a></li>
+                    <li><a href="#">Наши работы</a></li>
+                    <li><a href="#">Производство</a></li>
+                    <li><a href="#">Вакансии</a></li>
+                </ul>
+            </div>
+            <div class="footer-desktop">
+                <div class="col">
+                <span class="email">
+                    info@smartecons.md
+                </span>
+                    <span>str. Columna 174, et 2, of 210</span>
+                    <a class="contacts" href="#">
+                        Как доехать?
+                    </a>
+                </div>
+                <div class="col">
+                    <span class="number desk">022 005 034</span>
+                    <span class="number">076 704 300</span>
+                    <div class="socials">
+                        <a href="#"><span class="img" style="background-image: url(/img/fb.png)"></span></a>
+                        <a href="#"><span class="img" style="background-image: url(/img/g+.png)"></span></a>
+                        <a href="#"><span class="img" style="background-image: url(/img/insta.png)"></span></a>
+                        <a href="#"><span class="img" style="background-image: url(/img/tw.png)"></span></a>
+                    </div>
+                </div>
+                <div class="col menu">
+                    <a href="#">О нас</a>
+                    <a href="#">Новости</a>
+                    <a href="#">Услуги</a>
+                </div>
+                <div class="col menu">
+                    <a href="#">Наши работы</a>
+                    <a href="#">Производство</a>
+                    <a href="#">Вакансии</a>
+                </div>
+                <div class="col">
+                    <button id="fCallBack" class="main-link">Оставить заявку</button>
+                </div>
+                <div class="col">
+                    <a href="#" class="uniweb">
+                        <span>Создание сайта </span>
+                        <img src="/img/uniweb.png" alt="uniweb">
+                    </a>
+                </div>
+            </div>
+        </div>
 
 
+    </div>
+    <script>
+        document.getElementById('fCallBack').addEventListener('click',function(){
+            head.modal = !head.modal
+        });
+    </script>
 <script id="__bs_script__">//<![CDATA[
     document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.18.6'><\/script>".replace("HOST", location.hostname));
     //]]></script>

@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "slick-carousel": "^1.8.1",
+    "vee-validate": "^2.0.0-rc.21",
     "velocity-animate": "^1.5.0"
   }
 }
