@@ -36,6 +36,7 @@ window.head=new Vue({
         }
     },
     methods:{
+
         closeMod(){
             this.modal=false;
         },
@@ -97,3 +98,8 @@ window.head=new Vue({
         });
     }
 });
+window.callback = function(){
+    window.head.modal = !window.head.modal;
+}
+
+

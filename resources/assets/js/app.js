@@ -18,3 +18,4 @@ require('./home');
 require('./aboutUs');
 require('./services1');
 require('./services2');
+require('./projectPage');

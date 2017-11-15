@@ -25,3 +25,18 @@ Route::get('/services2', function () {
 Route::get('/services2', function () {
     return view('services2');
 });
+Route::get('/projectPage', function () {
+    return view('projectPage');
+});
+Route::get('/servicePage', function () {
+    return view('servicePage');
+});
+Route::get('/projects2', function () {
+    return view('projects2');
+});
+Route::get('/ourWorcs2', function () {
+    return view('ourWorcs2');
+});
+Route::get('/workPage', function () {
+    return view('workPage');
+});
