@@ -90,7 +90,9 @@
         <div class="container">
             <div class="breadcrumbs">
                 <a href="#" class="breadcrumb">Главная</a>
-                <a href="#" class="breadcrumb">Услуги</a>
+                <a href="#" class="breadcrumb">Портфолио</a>
+                <a href="#" class="breadcrumb">Наши работы</a>
+                <a href="#" class="breadcrumb">Дизайн интерьеров</a>
                 <span class="breadcrumb">Капитальное строительство</span>
             </div>
             <div class="h1-title">
@@ -120,17 +122,75 @@
                 </div>
                 <div class="template2-right">
                     <div class="editor">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea ex labore libero minus necessitatibus nisi perferendis porro quaerat quidem quis? Ad adipisci delectus deserunt ducimus exercitationem expedita nesciunt numquam, saepe. Cupiditate dolorem excepturi nemo? Enim illum impedit iure magnam magni, maiores minima perspiciatis quidem quis sequi tempora unde voluptas! Alias aliquam animi assumenda beatae cumque dicta dolor, dolore eaque ex fuga impedit maxime nulla pariatur porro quaerat quisquam sequi sunt, tempore unde vero. Amet, assumenda at atque debitis deserunt eius error eum facilis impedit minus neque non officia possimus praesentium quae quod repellendus sed suscipit vero voluptatem! Aspernatur consectetur dignissimos dolore dolores earum illum, incidunt laudantium magni nam neque nesciunt quidem quis quo quod reprehenderit rerum saepe sapiente suscipit? Aspernatur autem culpa dignissimos distinctio eaque, facere incidunt nihil non nostrum sint sunt totam ullam unde ut, voluptates! Dignissimos eveniet illo perferendis quae repellendus rerum sunt, voluptatem! Aspernatur debitis dolorem fugit laborum, natus non rem suscipit! Accusamus beatae consequatur corporis culpa cupiditate dignissimos ducimus eligendi eum fugiat illo incidunt iure mollitia nesciunt non, omnis optio perspiciatis possimus, quam quas quisquam repudiandae sunt ullam voluptas voluptate voluptatum? Aliquam amet consequuntur debitis et, labore odio porro quae repellendus similique veritatis! Eveniet illum, quis.
+                       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi corporis cumque, harum ipsum maiores non officiis recusandae. A consequatur cum debitis, eum eveniet expedita incidunt minus neque numquam quod reiciendis sint voluptates voluptatum. Asperiores deserunt dignissimos dolore doloribus et impedit in libero magni nostrum, nulla optio perferendis quia reiciendis veniam voluptates? Aliquam cupiditate deleniti dolor, labore odio quidem voluptates voluptatibus voluptatum. Aliquam culpa cupiditate dolorem dolorum eaque nostrum, totam voluptatem!
                     </div>
                     <div  class="socials">
                         <div class="title">Поделиться</div>
                         <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus"></div>
                     </div>
-
-
                 </div>
             </div>
+            <div class="block-page">
+                <h2>Описание</h2>
+            </div>
+            <div class="editor">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea ipsam ipsum molestiae, officia praesentium quia recusandae sapiente! Accusantium aliquam aliquid aut beatae debitis, dignissimos dolores ducimus et exercitationem explicabo fugiat fugit iusto laborum magni modi nesciunt nihil officia omnis, perferendis provident quibusdam quos repudiandae similique soluta temporibus vel voluptatibus? Ab, accusantium, aliquam, amet cupiditate delectus doloribus ex illum molestiae natus neque officiis possimus quae quibusdam repellendus rerum ut veniam voluptatem? Assumenda at, autem consequatur culpa cum deleniti dignissimos dolorum eius explicabo inventore magnam magni neque nostrum odit optio placeat praesentium quis quos sapiente, totam ut veniam vero. Ab cum doloremque dolores id laudantium nesciunt, nisi odio officiis quaerat quia quibusdam rem sint. Aspernatur incidunt libero maxime velit veniam? Aliquid amet deleniti deserunt dignissimos dolor dolore, eligendi error ex expedita itaque magnam, molestias, nisi obcaecati odit officiis pariatur sit sunt suscipit veniam veritatis. Accusantium dolore fugit, harum ipsum magnam nesciunt praesentium.
+            </div>
+            <div class="block-page">
+                <h2>Галерея</h2>
+            </div>
+            <div class="gallery">
+                <div class="img-wrapp"
+                     v-for="item in gallery"
+                     :data-src="item.type==='img' ? item.link : 'https://www.youtube.com/watch?v='+item.link"
+                >
+                    <div class="img"
+                         :style="item.type==='img'?{backgroundImage : 'url('+item.link+')' }:{backgroundImage : 'url(https://img.youtube.com/vi/'+item.link+'/hqdefault.jpg)' }"
+                         :class="{video : item.type !== 'img'}"
+                    >
+                    </div>
+                </div>
+            </div>
+            <div class="block-page">
+                <h2>Скачать документацию</h2>
 
+            </div>
+            <div class="files">
+                <a href="css.pdf" target="_blank" class="file">
+                    <div class="img"></div>
+                    <div class="title">Lorem ipsum dolor sit amet.</div>
+                </a>
+                <a href="css.docx" target="_blank" class="file">
+                    <div class="img"></div>
+                    <div class="title">Lorem ipsum dolor sit amet.</div>
+                </a>
+                <a href="css.pdf" target="_blank"  class="file">
+                    <div class="img"></div>
+                    <div class="title">Lorem ipsum dolor sit amet.</div>
+                </a>
+            </div>
+            <div class="block-page">
+                <h2>Отзыв клиента</h2>
+            </div>
+            <div class="user">
+                <div class="img" style="background-image: url(https://www.shareicon.net/download/2016/05/29/772558_user_512x512.png)"></div>
+                <div class="repl">
+                    <div class="top">
+                        <div class="name">
+                            Олег Иванов
+                        </div>
+                        <div class="date">
+                            25 sent 2017
+                        </div>
+                    </div>
+                    <div class="speciality">
+                        boss
+                    </div>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad asperiores aspernatur culpa deleniti dignissimos dolorum eius eum eveniet exercitationem explicabo hic illo in incidunt ipsa ipsum non omnis perferendis porro qui quod, sint vel voluptates voluptatibus. Aspernatur culpa cumque dignissimos, dolorem fuga iusto magnam odit provident vel voluptatum. Alias assumenda aut autem consectetur distinctio eaque eligendi explicabo harum id, illo impedit iste labore molestias nemo obcaecati quidem quisquam quos saepe sapiente sed similique sunt tempora. Aliquam aperiam atque autem blanditiis dolorum ea, eaque error esse in ipsa laudantium modi nam nisi nostrum numquam saepe similique sit, sunt. Adipisci aspernatur consequatur corporis culpa eius et, porro reiciendis reprehenderit repudiandae saepe, vero?
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>

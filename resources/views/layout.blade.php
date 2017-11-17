@@ -315,7 +315,7 @@
                 <div class="col">
                     <span class="number desk">022 005 034</span>
                     <span class="number">076 704 300</span>
-                    <div class="socials">
+                    <div class="fSocials">
                         <a href="#"><span class="img" style="background-image: url(/img/fb.png)"></span></a>
                         <a href="#"><span class="img" style="background-image: url(/img/g+.png)"></span></a>
                         <a href="#"><span class="img" style="background-image: url(/img/insta.png)"></span></a>

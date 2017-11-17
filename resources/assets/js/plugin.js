@@ -36,7 +36,6 @@ window.head=new Vue({
         }
     },
     methods:{
-
         closeMod(){
             this.modal=false;
         },
@@ -59,6 +58,14 @@ window.head=new Vue({
             });
         }
     },
+    watch:{
+        modal(){
+            (this.modal)?
+                document.querySelector('html , body').classList.add('scr-no')
+                :  document.querySelector('html , body').classList.remove('scr-no')
+
+        }
+    },
     mounted(){
         window.addEventListener('scroll',function(){
             if(window.scrollY > 500){
@@ -74,22 +81,35 @@ window.head=new Vue({
         });
         document.querySelector('.footer-mob > .mob-title').addEventListener('click',function(e){
             var el = e.currentTarget , close = el.getElementsByClassName('close')[0];
-            $(el).closest('.footer-mob').find('ul').css('display') !== 'none' ? $(close).removeAttr('style')
-            : $(close).css('transform','rotate(45deg)');
+            if($(el).closest('.footer-mob').find('ul').css('display') !== 'none'){
+                $(close).removeAttr('style');
+                Velocity(el.closest('.footer-mob').getElementsByTagName('ul')[0],'slideUp',{duration:500})
+            }  else{
+                $(close).css('transform','rotate(45deg)');
+                Velocity(el.closest('.footer-mob').getElementsByTagName('ul')[0],'slideDown',{duration:500})
+            }
+
             $(el).closest('.footer-mob').find('ul').slideToggle();
         });
         document.querySelector('.deep>.page-title').addEventListener('click',function(e){
             if(window.innerWidth <= 1100 ){
                 e.preventDefault();
                 var el= e.currentTarget;
-                $(el).closest('.deep').find('.submenu').slideDown('slow');
+                if($(el).closest('.deep').find('.submenu').css('display') !== 'block'){
+                    Velocity(el.closest('.deep').querySelector('.submenu') , "slideDown" , {duration:500})
+                }else{
+                    Velocity(el.closest('.deep').querySelector('.submenu') , "slideUp" , {duration:500})
+                }
             }
         });
         document.getElementsByClassName('close-menu')[0].addEventListener('click', function(){
+            document.querySelector('html , body').classList.remove('scr-no');
             Velocity(document.getElementsByClassName('header-bottom-wrapper')[0], { left:'-100vw' }, { duration: 500 });
+
         });
         document.getElementsByClassName('mob-menu-butt')[0].addEventListener('click',function(){
             Velocity(document.getElementsByClassName('header-bottom-wrapper')[0], { left: 0 }, { duration: 500 });
+            document.querySelector('html , body').classList.add('scr-no');
         });
         window.addEventListener('resize',function(){
             if(window.innerWidth>1100){

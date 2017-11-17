@@ -40,3 +40,21 @@ Route::get('/ourWorcs2', function () {
 Route::get('/workPage', function () {
     return view('workPage');
 });
+Route::get('/createPage', function () {
+    return view('creating');
+});
+Route::get('/newsPage', function () {
+    return view('newsPage');
+});
+Route::get('/searchPage', function () {
+    return view('searchPage');
+});
+Route::get('/oneNew', function () {
+    return view('oneNew');
+});
+Route::get('/vacantions', function () {
+    return view('vacantions');
+});
+Route::get('/contactsPage', function () {
+    return view('contactsPage');
+});

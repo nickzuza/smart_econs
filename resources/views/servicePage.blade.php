@@ -104,6 +104,20 @@
 
                 </div>
             </div>
+            <div class="files">
+                <a href="css.pdf" target="_blank" class="file">
+                    <div class="img"></div>
+                    <div class="title">Lorem ipsum dolor sit amet.</div>
+                </a>
+                <a href="css.docx" target="_blank" class="file">
+                    <div class="img"></div>
+                    <div class="title">Lorem ipsum dolor sit amet.</div>
+                </a>
+                <a href="css.pdf" target="_blank"  class="file">
+                    <div class="img"></div>
+                    <div class="title">Lorem ipsum dolor sit amet.</div>
+                </a>
+            </div>
 
         </div>
 
