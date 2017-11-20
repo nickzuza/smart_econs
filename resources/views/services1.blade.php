@@ -78,18 +78,19 @@
     <script>
         window.mapPins = [
             {lat: -25.363, lng: 131.044},
-            {lat: -25.363, lng: -131.044},
-            {lat: 25.363, lng: 131.044},
-            {lat: 25.363, lng: -131.044}
+//            {lat: -25.363, lng: -131.044},
+//            {lat: 25.363, lng: 131.044},
+//            {lat: 25.363, lng: -131.044}
         ];
 
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBinp18mlpjkOAKTgs-dtmtU0a743gKnec&callback=initMap" async defer></script>
     <script>
         function initMap(){
+
             var map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 40.674, lng: -73.945},
-                zoom: 12,
+                center: window.mapPins[0],
+                zoom: 14,
                 styles:[
                     {
                         "elementType": "geometry",
@@ -251,13 +252,23 @@
                     }
                 ]
             });
-            for(i = 0;i<window.mapPins.length;i++){
-                var marker = new google.maps.Marker({
-                    position: window.mapPins[i],
-                    map: map,
-                    icon:'./img/pin.png'
-                });
+            window.mapbounds = '';
+            window.mapbounds = new google.maps.LatLngBounds();
+
+                for(i = 0; i<window.mapPins.length; i++ ){
+                    var marker = new google.maps.Marker({
+                        position: window.mapPins[i],
+                        map: map,
+                        icon:'./img/pin.png'
+                    });
+                    if(window.mapPins.length >1){
+                        window.mapbounds.extend(window.mapPins[i]);
+                    }
+                }
+            if(window.mapPins.length >1){
+                map.fitBounds(window.mapbounds);
             }
+
         }
     </script>
 @stop
